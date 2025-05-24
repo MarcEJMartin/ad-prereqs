@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/pU5A58S.png" alt="Microsoft Active Directory Logo"/>
 </p>
 
-<h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
+<h1>Prerequisites for Deploying Active Directory Infrastructure within Azure (Azure)</h1>
 This tutorial covers setting up the Virtual Machines within Azure before creating the Active Directory infrastructure. This will outline the essential components and configurations required before beginning the setup process.<br />
 
 
