@@ -33,7 +33,7 @@ This tutorial covers setting up the Virtual Machines within Azure before creatin
 <h2>Deployment and Configuration Steps</h2>
 
 <p>
-<img src="https://github.com/user-attachments/assets/a6c6bd88-8c82-4e1f-9fcd-7e12bc205ce6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/user-attachments/assets/b566d11d-8eb4-4e82-9dc1-bee3610f9ffb" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
 To begin setting up an on-premises Active Directory environment in Azure, first create a **Resource Group** to organize and manage related resources. Next, set up a **Virtual Network (VNet)** with a subnet to provide isolated and secure communication between virtual machines. Then, deploy a **Windows Server 2022 VM** named **DC-1**, which will serve as the **Domain Controller** for your environment.
@@ -44,14 +44,23 @@ To begin setting up an on-premises Active Directory environment in Azure, first 
 <img src="https://github.com/user-attachments/assets/132c4fe4-6a74-4d21-9a57-6f5aef7c41ef" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+After creating the DC-1 virtual machine, configure its network interface in the Azure Portal to use a static private IP address, ensuring consistent DNS resolution and connectivity. This prevents the IP address from changing during reboots or updates. Then, log into the VM and temporarily disable the Windows Firewall to make it easier to test connectivity between devices during setup.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://github.com/user-attachments/assets/a6c6bd88-8c82-4e1f-9fcd-7e12bc205ce6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Deploy a Windows 10 VM named Client-1 in the same region and Virtual Network as DC-1 to ensure they can communicate with each other internally. After the VM is created, update Client-1’s DNS settings to use the private IP address of DC-1, allowing it to locate and connect to the Domain Controller. Once the DNS configuration is complete, restart Client-1 from the Azure Portal to apply the changes.
+</p>
+<br />
+
+<p>
+<img src="https://github.com/user-attachments/assets/a6c6bd88-8c82-4e1f-9fcd-7e12bc205ce6" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+After restarting Client-1, log into the virtual machine using the credentials you set during creation. Open **Command Prompt** or **PowerShell** and run the `ping` command using **DC-1’s private IP address** to confirm that the machines can communicate over the network. Then, use the command `ipconfig /all` to verify that **Client-1’s DNS settings** correctly reflect DC-1’s private IP, ensuring proper name resolution for domain services.
+
 </p>
 <br />
